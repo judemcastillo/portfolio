@@ -9,6 +9,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { AnimatedThemeToggleButton } from "@/components/ui/animated-theme-toggle-button";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import AboutSection from "./components/AboutSection.jsx";
 
 const SECTIONS = [
 	{ id: "About", label: "Intro" },
@@ -20,8 +21,8 @@ const SECTIONS = [
 function App() {
 	return (
 		<ThemeProvider>
-			<div className="relative flex min-h-screen w-screen flex-col overflow-hidden bg-background">
-				<div className="relative z-30 flex h-screen w-full gap-8 py-2  ">
+			<div className="relative flex min-h-screen w-screen flex-col overflow-hidden bg-background text-foreground">
+				<div className="relative z-30 flex h-screen w-full gap-8">
 					<StickySideNav sections={SECTIONS} />
 					<div className="h-full flex-1 overflow-y-scroll scroll-smooth pr-2 snap-y snap-mandatory">
 						<section
@@ -94,20 +95,8 @@ function App() {
 								</div>
 							</div>
 						</section>
-						<section
-							className="z-30 flex h-screen flex-col items-center justify-center gap-2 snap-start"
-							id="Skills"
-						>
-							<h2>About Me</h2>
-							<Card className="z-30 m-auto h-60 w-150 bg-background p-5">
-								<h1 className="text-4xl font-bold text-center">FrontEnd</h1>
-								<p>Skills</p>
-							</Card>
-							<Card className="z-30 m-auto h-60 w-150 bg-background p-5">
-								<h1 className="text-4xl font-bold text-center">Backend</h1>
-								<p>Skills</p>
-							</Card>
-						</section>
+						<AboutSection />
+
 						<section
 							className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start"
 							id="Experience"
