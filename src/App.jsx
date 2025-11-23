@@ -10,6 +10,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { AnimatedThemeToggleButton } from "@/components/ui/animated-theme-toggle-button";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import AboutSection from "./components/AboutSection.jsx";
+import ExperienceSection from "./components/ExperienceSection.jsx";
 
 const SECTIONS = [
 	{ id: "About", label: "Intro" },
@@ -96,16 +97,8 @@ function App() {
 							</div>
 						</section>
 						<AboutSection />
-
-						<section
-							className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start"
-							id="Experience"
-						>
-							<Card className="z-30 m-auto h-80 w-150 bg-background p-5">
-								<h1 className="text-4xl font-bold text-center">Experience</h1>
-								<p>Timeline</p>
-							</Card>
-						</section>
+						<ExperienceSection />
+						
 						<section
 							className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start"
 							id="Projects"
