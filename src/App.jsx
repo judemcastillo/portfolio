@@ -11,6 +11,7 @@ import { AnimatedThemeToggleButton } from "@/components/ui/animated-theme-toggle
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import AboutSection from "./components/AboutSection.jsx";
 import ExperienceSection from "./components/ExperienceSection.jsx";
+import ProjectSection from "./components/ProjectSection.jsx";
 
 const SECTIONS = [
 	{ id: "About", label: "Intro" },
@@ -98,16 +99,8 @@ function App() {
 						</section>
 						<AboutSection />
 						<ExperienceSection />
-						
-						<section
-							className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start"
-							id="Projects"
-						>
-							<Card className="z-30 m-auto h-80 w-150 bg-background p-5">
-								<h1 className="text-4xl font-bold text-center">Projects</h1>
-								<p>Timeline</p>
-							</Card>
-						</section>
+
+						<ProjectSection />
 					</div>
 				</div>
 				<AnimatePresence>
