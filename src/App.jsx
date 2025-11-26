@@ -28,19 +28,20 @@ function App() {
 					<StickySideNav sections={SECTIONS} />
 					<div className="h-full flex-1 overflow-y-scroll scroll-smooth pr-2 snap-y snap-mandatory">
 						<section
-							className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start"
+							className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start sm:px-[7%] sm:py-[5%] max-w-[1300px] w-full mx-auto"
 							id="About"
 						>
-							<div className="z-30 m-auto h-full w-full max-w-[1300px] p-10  flex flex-col justify-center gap-10 px-20">
+							<div className="z-30 m-auto h-screen w-full  md:p-3  flex flex-col justify-center sm:gap-10 md:px-0 px-[15%] gap-4">
 								<div className="relative flex flex-row items-center justify-between">
-									<h1 className="text-4xl font-bold text-center">
+									<h1 className="md:text-4xl font-bold text-center sm:text-3xl text-xl">
 										Hi I'm Jude Castillo
 									</h1>
+
 									<AnimatedThemeToggleButton type="horizontal" />
 								</div>
-								<div className="flex flex-row items-start gap-6 justify-start w-full">
+								<div className="flex md:flex-row md:items-start gap-6 md:justify-start w-full flex-col justify-center items-center">
 									<motion.img
-										className="lg:h-[450px] h-[300px] w-fit rounded-lg object-contain"
+										className="lg:h-[450px] md:h-[300px] sm:h-[450px] h-[200px] md:w-fit rounded-lg md:object-contain w-full object-cover"
 										initial={{ opacity: 0, y: 50 }}
 										animate={{ opacity: 1, y: 0 }}
 										transition={{
@@ -51,13 +52,15 @@ function App() {
 										}}
 										src="src/assets/profile2.jpg"
 									></motion.img>
-									<div className="flex flex-col gap-12 justify-start items-start h-full">
-										<div className="text-[25px] xl:text-[50px] font-semibold">
+									<div className="flex flex-col md:gap-12 sm:justify-start items-center h-full w-full gap-5 justify-center">
+										<div className="md:text-[40px] lg:text-[55px] font-semibold md:text-left sm:text-[33px] text-[24px] text-center w-full flex items-center justify-center md:justify-start">
 											I build websites that work and wow🔥
 										</div>
-										<div>
-											<div className="font-bold text-[50px]">Web Developer</div>
-											<div className="flex flex-row gap-3 items-center">
+										<div className="w-full">
+											<div className="font-bold lg:text-[40px] md:text-[35px] sm:text-[28px] text-[20px] sm:text-left text-center flex items-center justify-center md:justify-start">
+												Web Developer
+											</div>
+											<div className="flex flex-row gap-3 items-center md:justify-start justify-center">
 												<button
 													variant="icon"
 													className="cursor-pointer p-0 hover:scale-110 transition-all duration-300 hover:text-blue-400"
@@ -66,7 +69,7 @@ function App() {
 														href="https://www.linkedin.com/in/jude-castillo-7469941b7/"
 														target="_blank"
 													>
-														<Linkedin className="size-10" />
+														<Linkedin className="md:size-10 sm:size-8 size-5" />
 													</a>
 												</button>
 												<button
@@ -77,7 +80,7 @@ function App() {
 														href="https://github.com/judemcastillo"
 														target="_blank"
 													>
-														<Github className="size-10" />
+														<Github className="md:size-10 sm:size-8 size-5" />
 													</a>
 												</button>
 												<button
@@ -88,7 +91,10 @@ function App() {
 														href="https://github.com/judemcastillo"
 														target="_blank"
 													>
-														<Mail alt="email" className="size-10.5" />
+														<Mail
+															alt="email"
+															className="md:size-10 sm:size-8 size-5"
+														/>
 													</a>
 												</button>
 											</div>

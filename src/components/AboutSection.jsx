@@ -165,15 +165,14 @@ export default function AboutSection() {
 	};
 	return (
 		<section
-			className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start py-[5%] px-[7%]"
+			className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start py-[5%] px-[7%] "
 			id="Skills"
 		>
-			<div className="h-full flex flex-col items-center justify-start gap-5 w-full  ">
+			<div className="h-full flex flex-col items-center sm:justify-start gap-5 w-full  justify-center max-w-[1200px]">
 				<div>
-					<h1 className="text-4xl font-bold text-center ">What I do</h1>
-					<p className="w-full text-center text-muted-foreground">
-						Where design sense meets shipping fast crafting interfaces,
-						full-stack flows, and automations that keep teams moving.
+					<h1 className="sm:text-4xl font-bold text-center text-2xl">What I do</h1>
+					<p className="w-full text-center text-muted-foreground sm:text-md text-sm max-w-2xl">
+						Some of the things I can help you with.
 					</p>
 				</div>
 
@@ -187,21 +186,21 @@ export default function AboutSection() {
 						>
 							{marqueeItems.map((item, idx) => (
 								<Card
-									className="z-30 flex flex-col p-6 border-foreground/10 border-2 h-65  w-80 gap-2 flex-shrink-0 transition-opacity duration-200"
+									className="z-30 flex flex-col p-6 border-foreground/10 border-2 lg:h-63  lg:w-80 gap-2 flex-shrink-0 transition-opacity duration-200 w-74"
 									key={`${item.title}-${idx}`}
 									data-card
 								>
-									<div className="size-12">
+									<div className="sm:size-10 lg:size-14 flex items-center justify-center transition-all duration-300 size-8">
 										<img src={item.icon} alt={item.title} />
 									</div>
 
 									<div className="w-full flex flex-row items-start justify-between ">
-										<h3 className="font-semibold text-[20px] whitespace-break-spaces p-0 m-0 ">
+										<h3 className="font-semibold lg:text-[20px] whitespace-break-spaces p-0 m-0 sm:text-[16px] text-[14px]">
 											{item.title}
 										</h3>
 									</div>
 
-									<p className="text-primary dark:text-accent-foreground/60 text-[15px]">
+									<p className="text-primary dark:text-accent-foreground/60 lg:text-[15px] sm:text-[12px] text-[10px]">
 										{item.description}
 									</p>
 								</Card>
@@ -211,18 +210,18 @@ export default function AboutSection() {
 						<button
 							type="button"
 							onClick={() => handleArrow("prev")}
-							className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full shadow-md border opacity-50 border-accent-foreground/20 bg-background/70 p-3 text-sm font-semibold  backdrop-blur hover:bg-background ml-2"
+							className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full shadow-md border opacity-50 border-accent-foreground/20 bg-background/70 p-3 text-sm font-semibold  backdrop-blur hover:bg-background ml-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
 							aria-label="Previous"
 						>
-							<ArrowLeft className="size-5" />
+							<ArrowLeft className="sm:size-5 size-3" />
 						</button>
 						<button
 							type="button"
 							onClick={() => handleArrow("next")}
-							className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full shadow-md opacity-50 border border-accent-foreground/20 bg-background/70 p-3 text-sm font-semibold  backdrop-blur hover:bg-background mr-2"
+							className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full shadow-md opacity-50 border border-accent-foreground/20 bg-background/70 p-3 text-sm font-semibold  backdrop-blur hover:bg-background mr-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
 							aria-label="Next"
 						>
-							<ArrowRight className="size-5" />
+							<ArrowRight className="sm:size-5 size-3" />
 						</button>
 						<div className="mt-2 flex w-full justify-center gap-2 mb-4">
 							{about.map((item, idx) => (
@@ -245,10 +244,9 @@ export default function AboutSection() {
 			</div>
 			<div className="h-full flex flex-col items-center justify-start gap-8 w-full max-w-[1200px]">
 				<div>
-					<h1 className="text-4xl font-bold text-center">My Tech Stack</h1>
-					<p className="w-full text-center text-muted-foreground">
-						The tools I rely on to build resilient frontends, pragmatic
-						backends, and automated delivery pipelines.
+					<h1 className="text-2xl sm:text-4xl font-bold text-center">My Tech Stack</h1>
+					<p className="w-full text-center text-muted-foreground sm:text-md text-sm max-w-2xl">
+						The current technologies I use for building awesome web applications.
 					</p>
 				</div>
 
@@ -260,12 +258,12 @@ export default function AboutSection() {
 									className="group flex flex-col w-full items-center justify-center hover:-translate-y-1.5 transition-all duration-200  aspect-square"
 									key={skill.name}
 								>
-									<Card className="z-30 p-4 cursor-pointer border-foreground/10 border-2 flex items-center justify-start group-hover:border-accent-foreground/70 transition-all duration-300 group-hover:bg-accent dark:group-hover:bg-accent-foreground">
-										<div className="size-12 lg:size-18 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300 ">
+									<Card className="z-30 md:p-4 sm:p-3 p-2 cursor-pointer border-foreground/10 border-2 flex items-center justify-start group-hover:border-accent-foreground/70 transition-all duration-300 group-hover:bg-accent dark:group-hover:bg-accent-foreground">
+										<div className=" size-5 sm:size-10 lg:size-14 flex items-center justify-center sm:grayscale group-hover:grayscale-0 transition-all duration-300 grayscale-0">
 											<img
 												src={skill.icon}
 												alt={skill.name}
-												className="object-contain rounded-2xl  "
+												className="object-contain sm:rounded-2xl  rounded-md"
 											/>
 										</div>
 									</Card>

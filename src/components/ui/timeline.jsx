@@ -67,7 +67,7 @@ export const Timeline = ({ data }) => {
 	return (
 		<div
 			ref={containerRef}
-			className="max-h-[70vh] w-full overflow-y-auto bg-transparent pr-1 md:px-10"
+			className="max-h-[70vh] w-full overflow-y-auto no-scrollbar bg-transparent  md:px-10"
 			style={{
 				WebkitMaskImage:
 					"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
@@ -81,10 +81,10 @@ export const Timeline = ({ data }) => {
 						key={index}
 						data-index={index}
 						ref={(el) => (itemRefs.current[index] = el)}
-						className="flex justify-start pt-10 md:gap-10 md:pt-28"
+						className="flex justify-start pt-10  md:pt-28"
 					>
 						<div className="sticky top-28 z-40 flex max-w-xs flex-col items-center self-start md:max-w-sm md:w-full md:flex-row">
-							<div className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 bg-background shadow-[0_0_12px_rgba(0,0,0,0.3)]">
+							<div className="absolute sm:left-3 left-4.5 flex sm:size-10 size-8 items-center justify-center rounded-full border border-foreground/15 bg-background shadow-[0_0_12px_rgba(0,0,0,0.3)]">
 								<div
 									className={`h-4 w-4 rounded-full border transition-all duration-300 ${
 										activeIndex === index
@@ -98,7 +98,7 @@ export const Timeline = ({ data }) => {
 							</h3>
 						</div>
 
-						<div className="relative w-full pl-20 pr-4 md:pl-4">
+						<div className="relative w-full sm:pl-20 md:pl-4 pl-16">
 							<h3 className="mb-4 block text-left text-2xl font-bold md:hidden">
 								{item.title}
 							</h3>

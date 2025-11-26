@@ -65,7 +65,7 @@ export default function ExperienceSection() {
 				<Card className="relative border-foreground/10 border-2 backdrop-blur-sm shadow-xl overflow-hidden py-2">
 					<div className="absolute inset-0 " />
 					<div className="relative z-10 flex flex-col gap-4 p-6">
-						<div className="flex items-start justify-between gap-4 md:flex-col">
+						<div className="flex items-start justify-between gap-4 md:flex-col sm:flex-row flex-col">
 							<div className="flex items-center gap-3 flex-row ">
 								<div className="rounded-sm bg-transparent ">
 									<img
@@ -82,7 +82,7 @@ export default function ExperienceSection() {
 								</div>
 							</div>
 							<div className="flex flex-col items-end text-sm text-muted-foreground">
-								<span className="rounded-full border border-foreground/10 px-3 py-1 bg-background/60">
+								<span className="rounded-full sm:border sm:border-foreground/10 sm:px-3 sm:py-1 sm:bg-background/60">
 									{durationLabel}
 								</span>
 							</div>
@@ -91,7 +91,6 @@ export default function ExperienceSection() {
 						<ul className="grid gap-2 text-muted-foreground text-sm md:text-base">
 							{exp.description.map((line, idx) => (
 								<li key={idx} className="flex gap-2 leading-relaxed">
-								
 									<span>• {line}</span>
 								</li>
 							))}
@@ -104,20 +103,20 @@ export default function ExperienceSection() {
 
 	return (
 		<section
-			className="z-30 flex min-h-screen flex-col items-center justify-start gap-8 snap-start px-[7%] py-[5%]"
+			className="z-30 flex min-h-screen flex-col items-center justify-between gap-8 snap-start px-[7%] py-[5%]"
 			id="Experience"
 		>
-			<div className="flex w-full max-w-[1200px] flex-col items-center gap-4">
-				<div className="flex flex-col items-center gap-2">
-					<h1 className="text-4xl font-bold text-center">Experience</h1>
-					<p className="max-w-2xl text-center text-muted-foreground">
+			<div className="flex w-full max-w-[1200px] flex-col items-center gap-4 justify-between h-full">
+				<div className="flex flex-col items-center gap-2 h-full">
+					<h1 className="sm:text-4xl font-bold text-center text-2xl">Experience</h1>
+					<p className="max-w-2xl text-center text-muted-foreground text-sm sm:text-md">
 						A timeline of the roles where I shipped products, automated
 						workflows, and supported teams with pragmatic execution.
 					</p>
 				</div>
-				<div className="w-full h-full overflow-y-scroll">
-					<Timeline data={formattedExperiences} />
-				</div>
+			</div>
+			<div className="w-full h-full overflow-y-hidden max-w-[1200px]">
+				<Timeline data={formattedExperiences} />
 			</div>
 		</section>
 	);
