@@ -1,9 +1,22 @@
+import { useEffect, useRef, useState } from "react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { ArrowUpRight, Sparkles } from "lucide-react";
-import { motion } from "motion/react";
+import { ArrowUpRight, Github } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function ProjectSection() {
+	const [hoveredProject, setHoveredProject] = useState(null);
+	const hoverTimeout = useRef(null);
+
+	// Clear any queued hover timers when component unmounts
+	useEffect(() => {
+		return () => {
+			if (hoverTimeout.current) {
+				clearTimeout(hoverTimeout.current);
+			}
+		};
+	}, []);
+
 	const projects = [
 		{
 			title: "Yap space",
@@ -25,12 +38,55 @@ export default function ProjectSection() {
 				"Secure authentication via NextAuth (GitHub OAuth and credentials) with role-based access, protected routes, and JWT sessions",
 			],
 			codeLink: "https://github.com/judemcastillo/social-media-clone",
+			gif: "src/assets/yapspace.webp",
+		},
+		{
+			title: "Wheres Waldo",
+			link: "https://wheres-waldo-cyan.vercel.app/",
+			stack: [
+				"React",
+				"Vite",
+				"Tailwind CSS",
+				"Passport (JWT)",
+				"Vercel",
+				"PostgreSQL",
+				"Prisma",
+				"Node.js",
+				"Express",
+			],
+			thumbnail: "src/assets/whereswaldo.svg",
+			description: [
+				"A full-stack “Where's Waldo?” game built with React + Vite + Tailwind on the frontend and Node.js + Express + Prisma + PostgreSQL on the backend.",
+				"Players can play as Guest or log in, click the image to place a targeting box with a character dropdown, get instant feedback, and race the timer to the leaderboard",
+				"Secure authentication via Passport.js with role-based access, admin dashboard, protected routes, and JWT sessions",
+			],
+			codeLink: "https://github.com/judemcastillo/wheres-waldo",
+			gif: "src/assets/whereswaldo.webp",
+		},
+		{
+			title: "Fake/Shop - Modern E-Commerce Platform",
+			link: "https://e-commerce-shop-self.vercel.app/",
+			stack: [
+				"React",
+				"Tailwind CSS",
+				"React Router DOM",
+				"Vercel",
+				"Framer Motion",
+			],
+			thumbnail: "src/assets/fakeshop.jpg",
+			description: [
+				"Fake/Shop is a sophisticated, fully-responsive e-commerce web application built with modern web technologies.",
+				"This project demonstrates advanced React development skills, state management, API integration, and contemporary UI/UX design principles.",
+				"Real-time Data: Integration with FakeStore API for dynamic content",
+			],
+			codeLink: "https://github.com/judemcastillo/e-commerce-shop",
+			gif: "src/assets/fakeshop.webp",
 		},
 	];
 
 	return (
 		<section
-			className="z-30 flex min-h-screen flex-col items-center justify-start gap-10 snap-start px-[7%] py-[5%]"
+			className="z-30 flex max-h-screen flex-col items-center justify-start gap-10 snap-start px-[7%] py-[5%] h-full"
 			id="Projects"
 		>
 			<div className="flex w-full max-w-[1200px] flex-col items-center gap-3">
@@ -44,47 +100,43 @@ export default function ProjectSection() {
 				</div>
 			</div>
 
-			<div className="relative w-full max-w-[1200px] space-y-6 h-full overflow-y-scroll no-scrollbar">
-				<div className="pointer-events-none absolute -left-10 top-8 h-40 w-40 rounded-full bg-[radial-gradient(circle_at_center,_rgba(99,102,241,0.15)_0,_transparent_60%)] blur-2xl" />
-				<div className="pointer-events-none absolute -right-10 bottom-0 h-48 w-48 rounded-full bg-[radial-gradient(circle_at_center,_rgba(180,107,255,0.16)_0,_transparent_55%)] blur-2xl" />
-
+			<div className="flex flex-col   space-y-6 h-full overflow-y-scroll no-scrollbar w-full items-center justify-start">
 				{projects.map((project, index) => (
 					<motion.div
 						key={project.title}
 						initial={{ opacity: 0, y: 24 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true, amount: 0.3 }}
-						transition={{ duration: 0.5, delay: index * 0.08 }}
+						transition={{ duration: 0.8 }}
 						className="relative"
 					>
-						<Card className="relative overflow-hidden border-foreground/10 border-2 bg-background/80 backdrop-blur-xl shadow-[0_24px_120px_-60px_rgba(0,0,0,0.7)] p-0">
-							<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.16),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(180,107,255,0.16),transparent_30%),radial-gradient(circle_at_50%_80%,rgba(16,185,129,0.12),transparent_30%)] opacity-90" />
-							<div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
-
-							<div className="relative grid gap-6 p-6 sm:p-7 lg:grid-cols-[1.15fr_0.9fr]">
+						<Card className="relative  border-foreground/10 border-2 bg-background/80 backdrop-blur-xl  p-0 max-w-[1200px]">
+							<div className="relative grid gap-6 p-6 sm:p-7 lg:grid-cols-[1.15fr_0.7fr]">
 								<div className="flex flex-col gap-4">
 									<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 										<div className="flex items-center gap-3">
-											<div>
-												<h3 className="text-xl font-semibold sm:text-2xl">
-													{project.title}
-												</h3>
+											<div className="hover:underline cursor-pointer">
+												<a href={project.link} target="_blank" rel="noreferrer">
+													<h3 className="text-xl font-semibold sm:text-2xl">
+														{project.title}
+													</h3>
+												</a>
 											</div>
 										</div>
 										<a
-											href={project.link}
+											href={project.codeLink}
 											target="_blank"
 											rel="noreferrer"
-											className="group inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground transition-all duration-200  hover:border-foreground/30 hover:bg-foreground/10"
+											className="group inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground transition-all duration-200  hover:border-foreground/30 hover:bg-foreground/10"
 										>
-											<span>Visit</span>
-											<ArrowUpRight className="size-4 transition-transform duration-200" />
+											<span>Code</span>
+											<Github className="size-4 transition-transform duration-200" />
 										</a>
 									</div>
 
 									<ul className="grid gap-2 text-sm text-muted-foreground">
 										{project.description.map((line) => (
-											<li key={line} className="flex gap-2 leading-relaxed">												
+											<li key={line} className="flex gap-2 leading-relaxed">
 												<span>• {line}</span>
 											</li>
 										))}
@@ -103,15 +155,68 @@ export default function ProjectSection() {
 									</div>
 								</div>
 
-								<div className="relative">
+								<div className="relative flex  w-full items-center justify-center ">
 									<div className="absolute -left-6 -top-6 h-20 w-20 rounded-full bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.08)_0,_transparent_60%)] blur-xl" />
-									<div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-gradient-to-br from-background/90 to-background/70 p-4 shadow-inner">
-										<div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.05)_0,rgba(255,255,255,0)_45%,rgba(255,255,255,0.05)_70%)] opacity-60" />
-										<img
-											src={project.thumbnail}
-											alt={`${project.title} preview`}
-											className="relative z-10 h-full w-full rounded-xl object-contain"
-										/>
+									<div className="m-auto">
+										<a
+											href={project.link}
+											target="_blank"
+											rel="noreferrer"
+											className="group relative block overflow-hidden rounded-2xl"
+											onMouseEnter={() => {
+												if (hoverTimeout.current) {
+													clearTimeout(hoverTimeout.current);
+												}
+												hoverTimeout.current = setTimeout(() => {
+													setHoveredProject(project.title);
+												}, 500);
+											}}
+											onMouseLeave={() => {
+												if (hoverTimeout.current) {
+													clearTimeout(hoverTimeout.current);
+												}
+												setHoveredProject(null);
+											}}
+										>
+											<div className="relative">
+												<motion.img
+													src={project.thumbnail}
+													alt={`${project.title} preview`}
+													className="relative z-10 h-full w-full rounded-2xl object-contain"
+													animate={{
+														opacity:
+															hoveredProject === project.title ? 0 : 1,
+													}}
+													transition={{ duration: 0.35 }}
+												/>
+
+												<AnimatePresence>
+													{hoveredProject === project.title && (
+														<motion.img
+															key={`${project.title}-gif`}
+															src={project.gif}
+															alt={`${project.title} preview animated`}
+															className="absolute inset-0 z-20 h-full w-full rounded-2xl object-contain"
+															initial={{ opacity: 0 }}
+															animate={{ opacity: 1 }}
+															exit={{ opacity: 0 }}
+															transition={{ duration: 0.35 }}
+														/>
+													)}
+												</AnimatePresence>
+											</div>
+
+											<div
+												className={`absolute left-3 bottom-3 z-30 flex items-center gap-2 rounded-full bg-foreground/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-background transition-all duration-300 ${
+													hoveredProject === project.title
+														? "translate-y-0 opacity-100"
+														: "translate-y-2 opacity-0"
+												}`}
+											>
+												<span>Visit site</span>
+												<ArrowUpRight className="size-4" />
+											</div>
+										</a>
 									</div>
 								</div>
 							</div>

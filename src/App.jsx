@@ -1,8 +1,6 @@
-import { Button } from "./components/ui/button.jsx";
-import { Card } from "./components/ui/card";
-import { motion, AnimatePresence, scale } from "motion/react";
+import { useRef } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { ThemeProvider } from "./components/theme-provider.jsx";
-import DarkVeil from "./components/DarkVeil.jsx";
 import { StickySideNav } from "./components/StickySideNav.jsx";
 import AnoAI from "@/components/ui/animated-shader-background";
 import { BlurFade } from "@/components/ui/blur-fade";
@@ -21,12 +19,20 @@ const SECTIONS = [
 ];
 
 function App() {
+	const scrollContainerRef = useRef(null);
+
 	return (
 		<ThemeProvider>
 			<div className="relative flex min-h-screen w-screen flex-col overflow-hidden bg-background text-foreground">
 				<div className="relative z-30 flex h-screen w-full gap-8">
-					<StickySideNav sections={SECTIONS} />
-					<div className="h-full flex-1 overflow-y-scroll scroll-smooth pr-2 snap-y snap-mandatory">
+					<StickySideNav
+						sections={SECTIONS}
+						scrollContainerRef={scrollContainerRef}
+					/>
+					<div
+						ref={scrollContainerRef}
+						className="h-full flex-1 overflow-y-scroll scroll-smooth pr-2 snap-y snap-mandatory"
+					>
 						<section
 							className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start sm:px-[7%] sm:py-[5%] max-w-[1300px] w-full mx-auto"
 							id="About"

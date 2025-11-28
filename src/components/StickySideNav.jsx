@@ -8,7 +8,7 @@ const defaultSections = [
 	{ id: "Projects", label: "Projects" },
 ];
 
-export function StickySideNav({ sections }) {
+export function StickySideNav({ sections, scrollContainerRef }) {
 	const tocSections = useMemo(() => {
 		if (!sections || sections.length === 0) {
 			return defaultSections;
@@ -50,6 +50,29 @@ export function StickySideNav({ sections }) {
 		scheduleFadeOut();
 	}, [scheduleFadeOut]);
 
+	const handleSectionClick = useCallback(
+		(event, sectionId) => {
+			event.preventDefault();
+			const target = document.getElementById(sectionId);
+			if (!target) return;
+
+			const root = scrollContainerRef?.current;
+
+			if (root) {
+				const rootRect = root.getBoundingClientRect();
+				const targetRect = target.getBoundingClientRect();
+				const offset = targetRect.top - rootRect.top + root.scrollTop;
+				root.scrollTo({ top: offset, behavior: "smooth" });
+			} else {
+				target.scrollIntoView({ behavior: "smooth", block: "start" });
+			}
+
+			setActiveId(sectionId);
+			revealLabels();
+		},
+		[revealLabels, scrollContainerRef]
+	);
+
 	useEffect(() => {
 		if (!tocSections.length) return;
 		if (!tocSections.some((section) => section.id === activeId)) {
@@ -87,7 +110,8 @@ export function StickySideNav({ sections }) {
 				}
 			},
 			{
-				rootMargin: "-45% 0px -45% 0px",
+				root: scrollContainerRef?.current ?? null,
+				rootMargin: "-35% 0px -35% 0px",
 				threshold: Array.from({ length: 11 }, (_, index) => index / 10),
 			}
 		);
@@ -102,7 +126,7 @@ export function StickySideNav({ sections }) {
 			observedElements.forEach((el) => observer.unobserve(el));
 			observer.disconnect();
 		};
-	}, [tocSections]);
+	}, [tocSections, scrollContainerRef]);
 
 	useEffect(() => {
 		revealLabels();
@@ -145,6 +169,7 @@ export function StickySideNav({ sections }) {
 								<a
 									href={`#${section.id}`}
 									aria-current={isActive ? "location" : undefined}
+									onClick={(event) => handleSectionClick(event, section.id)}
 									className={`relative flex items-center gap-4 text-left font-semibold transition-colors lg:h-5 text-md h-2 ${
 										isActive ? "text-foreground" : "text-muted-foreground"
 									}`}
@@ -168,8 +193,8 @@ export function StickySideNav({ sections }) {
 										className={`duration-350 transition-all  lg:text-[15px] text-[10px] ${
 											showLabels
 												? isActive
-													? "opacity-100 scale-120 "
-													: "opacity-40 hover:scale-120 "
+													? "opacity-100 scale-120 translate-x-2"
+													: "opacity-40  hover:translate-x-2 hover:scale-120"
 												: "opacity-0"
 										}`}
 									>

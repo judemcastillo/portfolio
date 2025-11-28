@@ -5,27 +5,56 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "@/components/ui/tooltip.jsx";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function AboutSection() {
 	const skills = [
-		{ name: "JavaScript", icon: "src/assets/javascript.svg" },
-		{ name: "React", icon: "src/assets/react.svg" },
-		{ name: "Python", icon: "src/assets/python.svg" },
-		{ name: "TypeScript", icon: "src/assets/typescript.svg" },
-		{ name: "Node.js", icon: "src/assets/nodejs.svg" },
-		{ name: "Next.js", icon: "src/assets/nextjs.svg" },
-		{ name: "Tailwind CSS", icon: "src/assets/tailwindcss.svg" },
-		{ name: "Express.js", icon: "src/assets/express.svg" },
-		{ name: "PostgreSQL", icon: "src/assets/postgresql.svg" },
-		{ name: "Prisma ORM", icon: "src/assets/prisma.svg" },
-		{ name: "ShadCN", icon: "src/assets/shadcn.png" },
-		{ name: "WordPress", icon: "src/assets/wordpress.svg" },
-		{ name: "GIT", icon: "src/assets/git.svg" },
-		{ name: "AWS", icon: "src/assets/aws.svg" },
-		{ name: "Make", icon: "src/assets/make.svg" },
-		{ name: "GitHub", icon: "src/assets/github.svg" },
-		{ name: "Framer Motion", icon: "src/assets/framer-motion.svg" },
+		{
+			name: "JavaScript",
+			icon: "src/assets/javascript.svg",
+			category: "language",
+		},
+		{ name: "React", icon: "src/assets/react.svg", category: "frontend" },
+		{ name: "Python", icon: "src/assets/python.svg", category: "language" },
+		{
+			name: "TypeScript",
+			icon: "src/assets/typescript.svg",
+			category: "language",
+		},
+		{ name: "Node.js", icon: "src/assets/nodejs.svg", category: "backend" },
+		{ name: "Next.js", icon: "src/assets/nextjs.svg", category: "frontend" },
+		{
+			name: "Tailwind CSS",
+			icon: "src/assets/tailwindcss.svg",
+			category: "frontend",
+		},
+		{ name: "Express.js", icon: "src/assets/express.svg", category: "backend" },
+		{
+			name: "PostgreSQL",
+			icon: "src/assets/postgresql.svg",
+			category: "backend",
+		},
+		{ name: "Prisma ORM", icon: "src/assets/prisma.svg", category: "backend" },
+		{ name: "ShadCN", icon: "src/assets/shadcn.png", category: "frontend" },
+		{ name: "WordPress", icon: "src/assets/wordpress.svg", category: "cms" },
+		{
+			name: "GIT",
+			icon: "src/assets/git.svg",
+			category: "version control",
+		},
+		{ name: "AWS", icon: "src/assets/aws.svg", category: "backend" },
+		{ name: "Make", icon: "src/assets/make.svg", category: "automation" },
+		{
+			name: "GitHub",
+			icon: "src/assets/github.svg",
+			category: "version control",
+		},
+		{
+			name: "Framer Motion",
+			icon: "src/assets/framer-motion.svg",
+			category: "frontend",
+		},
 	];
 	const about = [
 		{
@@ -60,6 +89,13 @@ export default function AboutSection() {
 	const activeIndexRef = useRef(0);
 	const [isPaused, setIsPaused] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [selectedCategory, setSelectedCategory] = useState("all");
+
+	const categories = ["all", ...new Set(skills.map((skill) => skill.category))];
+	const filteredSkills =
+		selectedCategory === "all"
+			? skills
+			: skills.filter((skill) => skill.category === selectedCategory);
 
 	useEffect(() => {
 		const track = trackRef.current;
@@ -170,7 +206,9 @@ export default function AboutSection() {
 		>
 			<div className="h-full flex flex-col items-center sm:justify-start gap-5 w-full  justify-center max-w-[1200px]">
 				<div>
-					<h1 className="sm:text-4xl font-bold text-center text-2xl">What I do</h1>
+					<h1 className="sm:text-4xl font-bold text-center text-2xl">
+						What I do
+					</h1>
 					<p className="w-full text-center text-muted-foreground sm:text-md text-sm max-w-2xl">
 						Some of the things I can help you with.
 					</p>
@@ -190,7 +228,7 @@ export default function AboutSection() {
 									key={`${item.title}-${idx}`}
 									data-card
 								>
-									<div className="sm:size-10 lg:size-14 flex items-center justify-center transition-all duration-300 size-8">
+									<div className="sm:size-10 lg:size-14 flex items-center justify-center transition-all duration-300 size-7">
 										<img src={item.icon} alt={item.title} />
 									</div>
 
@@ -210,7 +248,7 @@ export default function AboutSection() {
 						<button
 							type="button"
 							onClick={() => handleArrow("prev")}
-							className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full shadow-md border opacity-50 border-accent-foreground/20 bg-background/70 p-3 text-sm font-semibold  backdrop-blur hover:bg-background ml-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
+							className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full shadow-md border opacity-50 border-accent-foreground/20 bg-background/70 p-1.5 sm:p-3 text-sm font-semibold  backdrop-blur hover:bg-background ml-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
 							aria-label="Previous"
 						>
 							<ArrowLeft className="sm:size-5 size-3" />
@@ -218,7 +256,7 @@ export default function AboutSection() {
 						<button
 							type="button"
 							onClick={() => handleArrow("next")}
-							className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full shadow-md opacity-50 border border-accent-foreground/20 bg-background/70 p-3 text-sm font-semibold  backdrop-blur hover:bg-background mr-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
+							className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full shadow-md opacity-50 border border-accent-foreground/20 bg-background/70  text-sm font-semibold  p-1.5 sm:p-3 backdrop-blur hover:bg-background mr-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
 							aria-label="Next"
 						>
 							<ArrowRight className="sm:size-5 size-3" />
@@ -244,34 +282,85 @@ export default function AboutSection() {
 			</div>
 			<div className="h-full flex flex-col items-center justify-start gap-8 w-full max-w-[1200px]">
 				<div>
-					<h1 className="text-2xl sm:text-4xl font-bold text-center">My Tech Stack</h1>
+					<h1 className="text-2xl sm:text-4xl font-bold text-center">
+						My Tech Stack
+					</h1>
 					<p className="w-full text-center text-muted-foreground sm:text-md text-sm max-w-2xl">
-						The current technologies I use for building awesome web applications.
+						The current technologies I use for building awesome web
+						applications.
 					</p>
 				</div>
 
 				<div className="flex flex-row flex-wrap items-center justify-center w-full gap-3 ">
-					{skills.map((skill) => (
-						<Tooltip>
-							<TooltipTrigger>
-								<div
-									className="group flex flex-col w-full items-center justify-center hover:-translate-y-1.5 transition-all duration-200  aspect-square"
-									key={skill.name}
-								>
-									<Card className="z-30 md:p-4 sm:p-3 p-2 cursor-pointer border-foreground/10 border-2 flex items-center justify-start group-hover:border-accent-foreground/70 transition-all duration-300 group-hover:bg-accent dark:group-hover:bg-accent-foreground">
-										<div className=" size-5 sm:size-10 lg:size-14 flex items-center justify-center sm:grayscale group-hover:grayscale-0 transition-all duration-300 grayscale-0">
-											<img
-												src={skill.icon}
-												alt={skill.name}
-												className="object-contain sm:rounded-2xl  rounded-md"
+					<LayoutGroup>
+						<div className="flex flex-wrap items-center justify-center gap-2">
+							{categories.map((category) => {
+								const isActive = category === selectedCategory;
+								return (
+									<motion.button
+										key={category}
+										type="button"
+										onClick={() => setSelectedCategory(category)}
+										className="relative px-4 py-2 text-sm capitalize transition-all duration-200 border-b-2 border-transparent hover:-translate-y-0.5 cursor-pointer"
+										whileTap={{ scale: 0.97 }}
+									>
+										{isActive && (
+											<motion.span
+												layoutId="tab-underline"
+												className="absolute left-0 right-0 bottom-0 h-[2px] bg-accent"
+												transition={{
+													type: "spring",
+													stiffness: 300,
+													damping: 24,
+												}}
 											/>
-										</div>
-									</Card>
+										)}
+										<span
+											className={
+												isActive ? "font-semibold" : "text-foreground/70"
+											}
+										>
+											{category === "all" ? "All" : category}
+										</span>
+									</motion.button>
+								);
+							})}
+						</div>
+					</LayoutGroup>
+
+					<motion.div className="flex flex-row flex-wrap items-center justify-center  h-full max-w-[1200px] w-full gap-3 overflow-y-scroll no-scrollbar"
+						layout
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+					>
+						<AnimatePresence mode="popLayout">
+							{filteredSkills.map((skill, idx) => (
+								<div
+									layout
+									key={skill.name}
+									className="group flex flex-col items-center justify-center hover:-translate-y-1.5 transition-all duration-200 aspect-square "
+								>
+									<Tooltip key={skill.name}>
+										<TooltipTrigger asChild>
+											<div className="group flex flex-col w-full items-center justify-center">
+												<Card className="z-30 md:p-4 sm:p-3 p-1 cursor-pointer border-foreground/10 border-2 flex items-center justify-start group-hover:border-accent-foreground/70 transition-all duration-300 group-hover:bg-accent dark:group-hover:bg-accent-foreground">
+													<div className="size-7 sm:size-10 lg:size-12 flex items-center justify-center sm:grayscale group-hover:grayscale-0 transition-all duration-300 grayscale-0">
+														<img
+															src={skill.icon}
+															alt={skill.name}
+															className="object-contain sm:rounded-2xl rounded-md"
+														/>
+													</div>
+												</Card>
+											</div>
+										</TooltipTrigger>
+										<TooltipContent>{skill.name}</TooltipContent>
+									</Tooltip>
 								</div>
-							</TooltipTrigger>{" "}
-							<TooltipContent>{skill.name}</TooltipContent>
-						</Tooltip>
-					))}
+							))}
+						</AnimatePresence>
+					</motion.div>
 				</div>
 			</div>
 		</section>
