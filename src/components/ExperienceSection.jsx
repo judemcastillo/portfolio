@@ -1,5 +1,6 @@
 import { Card } from "./ui/card";
 import { Timeline } from "./ui/timeline";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 export default function ExperienceSection() {
 	const experiences = [
@@ -108,15 +109,23 @@ export default function ExperienceSection() {
 		>
 			<div className="flex w-full max-w-[1200px] flex-col items-center gap-4 justify-between h-full">
 				<div className="flex flex-col items-center gap-2 h-full">
-					<h1 className="sm:text-4xl font-bold text-center text-2xl">Experience</h1>
-					<p className="max-w-2xl text-center text-muted-foreground text-sm sm:text-md">
-						A timeline of the roles where I shipped products, automated
-						workflows, and supported teams with pragmatic execution.
-					</p>
+					<BlurFade inView delay={0.2}>
+						<h1 className="sm:text-4xl font-bold text-center text-2xl">
+							Experience
+						</h1>
+					</BlurFade>
+					<BlurFade inView delay={0.4}>
+						<p className="max-w-2xl text-center text-muted-foreground text-sm sm:text-md">
+							A timeline of the roles where I shipped products, automated
+							workflows, and supported teams with pragmatic execution.
+						</p>
+					</BlurFade>
 				</div>
 			</div>
 			<div className="w-full h-full overflow-y-hidden max-w-[1200px]">
-				<Timeline data={formattedExperiences} />
+				<BlurFade inView delay={0.6}>
+					<Timeline data={formattedExperiences} />
+				</BlurFade>
 			</div>
 		</section>
 	);

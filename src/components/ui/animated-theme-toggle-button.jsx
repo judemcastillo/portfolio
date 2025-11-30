@@ -75,7 +75,7 @@ export const AnimatedThemeToggleButton = ({
       aria-label={`Toggle theme - ${type}`}
       type="button"
       className={cn(
-        "flex items-center justify-center p-2 rounded-full outline-none focus:outline-none active:outline-none focus:ring-0 cursor-pointer  sm:mx-3 transition-colors sm:size-12  size-8 border-accent/20 shadow-sm border-2 mx-0",
+        "flex items-center justify-center p-2 rounded-full outline-none focus:outline-none active:outline-none focus:ring-0 cursor-pointer  sm:mx-3 transition-colors sm:size-12  size-9 border-accent/20 shadow-sm border-2 mx-0",
         darkMode ? "bg-neutral-900" : "bg-white",
         className
       )}
@@ -89,7 +89,7 @@ export const AnimatedThemeToggleButton = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.33 }}
             className="text-yellow-400 ">
-            <Sun  className="sm:size-8 size-4"/>
+            <Sun  className="sm:size-8 size-5"/>
           </motion.span>
         ) : (
           <motion.span
@@ -99,7 +99,7 @@ export const AnimatedThemeToggleButton = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.33 }}
             className="text-blue-900">
-            <Moon className="sm:size-8 size-4"/>
+            <Moon className="sm:size-8 size-5"/>
           </motion.span>
         )}
       </AnimatePresence>

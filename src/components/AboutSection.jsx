@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/tooltip.jsx";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 export default function AboutSection() {
 	const skills = [
@@ -37,7 +38,7 @@ export default function AboutSection() {
 		},
 		{ name: "Prisma ORM", icon: "src/assets/prisma.svg", category: "backend" },
 		{ name: "ShadCN", icon: "src/assets/shadcn.png", category: "frontend" },
-		{ name: "WordPress", icon: "src/assets/wordpress.svg", category: "cms" },
+		{ name: "WordPress", icon: "src/assets/wordpress.svg", category: "CMS" },
 		{
 			name: "GIT",
 			icon: "src/assets/git.svg",
@@ -206,161 +207,169 @@ export default function AboutSection() {
 		>
 			<div className="h-full flex flex-col items-center sm:justify-start gap-5 w-full  justify-center max-w-[1200px]">
 				<div>
-					<h1 className="sm:text-4xl font-bold text-center text-2xl">
-						What I do
-					</h1>
-					<p className="w-full text-center text-muted-foreground sm:text-md text-sm max-w-2xl">
-						Some of the things I can help you with.
-					</p>
+					<BlurFade inView delay={0.2}>
+						<h1 className="sm:text-4xl font-bold text-center text-2xl">
+							What I do
+						</h1>
+					</BlurFade>
+					<BlurFade inView delay={0.4}>
+						<p className="w-full text-center text-muted-foreground sm:text-md text-sm max-w-2xl">
+							Some of the things I can help you with.
+						</p>
+					</BlurFade>
 				</div>
+				<BlurFade inView delay={0.5}>
+					<div className="flex flex-col items-center gap-4 w-full max-w-[1200px]">
+						<div className="relative w-full overflow-hidden">
+							<div
+								ref={trackRef}
+								onMouseEnter={() => setIsPaused(true)}
+								onMouseLeave={() => setIsPaused(false)}
+								className="flex w-full flex-nowrap gap-4 overflow-hidden marquee-fade py-5"
+							>
+								{marqueeItems.map((item, idx) => (
+									<Card
+										className="z-30 flex flex-col p-6 border-foreground/10 border-2 lg:h-63  lg:w-80 gap-2 flex-shrink-0 transition-opacity duration-200 w-74"
+										key={`${item.title}-${idx}`}
+										data-card
+									>
+										<div className="sm:size-10 lg:size-14 flex items-center justify-center transition-all duration-300 size-7">
+											<img src={item.icon} alt={item.title} />
+										</div>
 
-				<div className="flex flex-col items-center gap-4 w-full max-w-[1200px]">
-					<div className="relative w-full overflow-hidden">
-						<div
-							ref={trackRef}
-							onMouseEnter={() => setIsPaused(true)}
-							onMouseLeave={() => setIsPaused(false)}
-							className="flex w-full flex-nowrap gap-4 overflow-hidden marquee-fade py-5"
-						>
-							{marqueeItems.map((item, idx) => (
-								<Card
-									className="z-30 flex flex-col p-6 border-foreground/10 border-2 lg:h-63  lg:w-80 gap-2 flex-shrink-0 transition-opacity duration-200 w-74"
-									key={`${item.title}-${idx}`}
-									data-card
-								>
-									<div className="sm:size-10 lg:size-14 flex items-center justify-center transition-all duration-300 size-7">
-										<img src={item.icon} alt={item.title} />
-									</div>
+										<div className="w-full flex flex-row items-start justify-between ">
+											<h3 className="font-semibold lg:text-[20px] whitespace-break-spaces p-0 m-0 sm:text-[16px] text-[14px]">
+												{item.title}
+											</h3>
+										</div>
 
-									<div className="w-full flex flex-row items-start justify-between ">
-										<h3 className="font-semibold lg:text-[20px] whitespace-break-spaces p-0 m-0 sm:text-[16px] text-[14px]">
-											{item.title}
-										</h3>
-									</div>
+										<p className="text-primary dark:text-accent-foreground/60 lg:text-[15px] sm:text-[12px] text-[10px]">
+											{item.description}
+										</p>
+									</Card>
+								))}
+							</div>
 
-									<p className="text-primary dark:text-accent-foreground/60 lg:text-[15px] sm:text-[12px] text-[10px]">
-										{item.description}
-									</p>
-								</Card>
-							))}
-						</div>
-
-						<button
-							type="button"
-							onClick={() => handleArrow("prev")}
-							className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full shadow-md border opacity-50 border-accent-foreground/20 bg-background/70 p-1.5 sm:p-3 text-sm font-semibold  backdrop-blur hover:bg-background ml-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
-							aria-label="Previous"
-						>
-							<ArrowLeft className="sm:size-5 size-3" />
-						</button>
-						<button
-							type="button"
-							onClick={() => handleArrow("next")}
-							className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full shadow-md opacity-50 border border-accent-foreground/20 bg-background/70  text-sm font-semibold  p-1.5 sm:p-3 backdrop-blur hover:bg-background mr-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
-							aria-label="Next"
-						>
-							<ArrowRight className="sm:size-5 size-3" />
-						</button>
-						<div className="mt-2 flex w-full justify-center gap-2 mb-4">
-							{about.map((item, idx) => (
-								<button
-									key={item.title}
-									type="button"
-									onClick={() => handleDotClick(idx)}
-									className={`h-2.5 w-2.5 rounded-full transition-all duration-200 ${
-										activeIndex === idx
-											? "bg-accent shadow-[0_0_0_4px] shadow-accent/20"
-											: "bg-foreground/20 hover:bg-foreground/40"
-									}`}
-									aria-label={`Go to ${item.title}`}
-									aria-pressed={activeIndex === idx}
-								/>
-							))}
+							<button
+								type="button"
+								onClick={() => handleArrow("prev")}
+								className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full shadow-md border opacity-50 border-accent-foreground/20 bg-background/70 p-1.5 sm:p-3 text-sm font-semibold  backdrop-blur hover:bg-background ml-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
+								aria-label="Previous"
+							>
+								<ArrowLeft className="sm:size-5 size-3" />
+							</button>
+							<button
+								type="button"
+								onClick={() => handleArrow("next")}
+								className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full shadow-md opacity-50 border border-accent-foreground/20 bg-background/70  text-sm font-semibold  p-1.5 sm:p-3 backdrop-blur hover:bg-background mr-2 hover:opacity-100 cursor-pointer duration-150 transition-all"
+								aria-label="Next"
+							>
+								<ArrowRight className="sm:size-5 size-3" />
+							</button>
+							<div className="mt-2 flex w-full justify-center gap-2 mb-4">
+								{about.map((item, idx) => (
+									<button
+										key={item.title}
+										type="button"
+										onClick={() => handleDotClick(idx)}
+										className={`h-2.5 w-2.5 rounded-full transition-all duration-200 ${
+											activeIndex === idx
+												? "bg-accent shadow-[0_0_0_4px] shadow-accent/20"
+												: "bg-foreground/20 hover:bg-foreground/40"
+										}`}
+										aria-label={`Go to ${item.title}`}
+										aria-pressed={activeIndex === idx}
+									/>
+								))}
+							</div>
 						</div>
 					</div>
-				</div>
+				</BlurFade>
 			</div>
-			<div className="h-full flex flex-col items-center justify-start gap-8 w-full max-w-[1200px]">
+			<div className="h-full flex flex-col items-center justify-start gap-5 w-full max-w-[1200px]">
 				<div>
-					<h1 className="text-2xl sm:text-4xl font-bold text-center">
-						My Tech Stack
-					</h1>
-					<p className="w-full text-center text-muted-foreground sm:text-md text-sm max-w-2xl">
-						The current technologies I use for building awesome web
-						applications.
-					</p>
+					<BlurFade inView delay={0.6}>
+						<h1 className="text-2xl sm:text-4xl font-bold text-center">
+							My Tech Stack
+						</h1>
+					</BlurFade>
+					<BlurFade inView delay={0.7}>
+						<p className="w-full text-center text-muted-foreground sm:text-md text-sm max-w-2xl">
+							The current technologies I use for building awesome web
+							applications.
+						</p>
+					</BlurFade>
 				</div>
 
-				<div className="flex flex-row flex-wrap items-center justify-center w-full gap-3 ">
+				<div className="flex flex-col  items-center justify-center w-full gap-3 ">
 					<LayoutGroup>
 						<div className="flex flex-wrap items-center justify-center gap-2">
-							{categories.map((category) => {
+							{categories.map((category, idx) => {
 								const isActive = category === selectedCategory;
 								return (
-									<motion.button
-										key={category}
-										type="button"
-										onClick={() => setSelectedCategory(category)}
-										className="relative px-4 py-2 text-sm capitalize transition-all duration-200 border-b-2 border-transparent hover:-translate-y-0.5 cursor-pointer"
-										whileTap={{ scale: 0.97 }}
-									>
-										{isActive && (
-											<motion.span
-												layoutId="tab-underline"
-												className="absolute left-0 right-0 bottom-0 h-[2px] bg-accent"
-												transition={{
-													type: "spring",
-													stiffness: 300,
-													damping: 24,
-												}}
-											/>
-										)}
-										<span
-											className={
-												isActive ? "font-semibold" : "text-foreground/70"
-											}
+									<BlurFade inView delay={0.7 + idx * 0.1}>
+										<motion.button
+											key={category}
+											type="button"
+											onClick={() => setSelectedCategory(category)}
+											className="relative sm:px-4 py-2 sm:text-sm capitalize transition-all duration-200 border-3 border-transparent hover:-translate-y-0.5 cursor-pointer text-xs"
+											whileTap={{ scale: 0.97 }}
 										>
-											{category === "all" ? "All" : category}
-										</span>
-									</motion.button>
+											{isActive && (
+												<motion.span
+													layoutId="tab-underline"
+													className="absolute left-0 right-0 bottom-0 h-[2px] bg-accent"
+													transition={{
+														type: "spring",
+														stiffness: 300,
+														damping: 24,
+													}}
+												/>
+											)}
+											<span
+												className={
+													isActive ? "font-semibold" : "text-foreground/70"
+												}
+											>
+												{category === "all" ? "All" : category}
+											</span>
+										</motion.button>
+									</BlurFade>
 								);
 							})}
 						</div>
 					</LayoutGroup>
 
-					<motion.div className="flex flex-row flex-wrap items-center justify-center  h-full max-w-[1200px] w-full gap-3 overflow-y-scroll no-scrollbar"
-						layout
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5 }}
+					<BlurFade
+						inView
+						delay={1.1}
+						className="flex flex-row flex-wrap items-center justify-center  p-3 h-full max-w-[1200px] w-full gap-3 overflow-y-scroll sm:max-h-100 no-scrollbar max-h-30"
 					>
-						<AnimatePresence mode="popLayout">
-							{filteredSkills.map((skill, idx) => (
-								<div
-									layout
-									key={skill.name}
-									className="group flex flex-col items-center justify-center hover:-translate-y-1.5 transition-all duration-200 aspect-square "
-								>
-									<Tooltip key={skill.name}>
-										<TooltipTrigger asChild>
-											<div className="group flex flex-col w-full items-center justify-center">
-												<Card className="z-30 md:p-4 sm:p-3 p-1 cursor-pointer border-foreground/10 border-2 flex items-center justify-start group-hover:border-accent-foreground/70 transition-all duration-300 group-hover:bg-accent dark:group-hover:bg-accent-foreground">
-													<div className="size-7 sm:size-10 lg:size-12 flex items-center justify-center sm:grayscale group-hover:grayscale-0 transition-all duration-300 grayscale-0">
-														<img
-															src={skill.icon}
-															alt={skill.name}
-															className="object-contain sm:rounded-2xl rounded-md"
-														/>
-													</div>
-												</Card>
-											</div>
-										</TooltipTrigger>
-										<TooltipContent>{skill.name}</TooltipContent>
-									</Tooltip>
-								</div>
-							))}
-						</AnimatePresence>
-					</motion.div>
+						{filteredSkills.map((skill, idx) => (
+							<div
+								layout
+								key={skill.name}
+								className="group flex flex-col items-center justify-center hover:-translate-y-1.5 transition-all duration-200 aspect-square "
+							>
+								<Tooltip key={skill.name}>
+									<TooltipTrigger asChild>
+										<div className="group flex flex-col w-full items-center justify-center">
+											<Card className="z-30 md:p-3 sm:p-2 p-1 cursor-pointer border-foreground/10 border-2 flex items-center justify-start group-hover:border-accent-foreground/70 transition-all duration-300 group-hover:bg-accent dark:group-hover:bg-accent-foreground rounded-md">
+												<div className="size-7 sm:size-7 lg:size-12 flex items-center justify-center sm:grayscale group-hover:grayscale-0 transition-all duration-300 grayscale-0">
+													<img
+														src={skill.icon}
+														alt={skill.name}
+														className="object-contain sm:rounded-[10px] rounded-sm"
+													/>
+												</div>
+											</Card>
+										</div>
+									</TooltipTrigger>
+									<TooltipContent>{skill.name}</TooltipContent>
+								</Tooltip>
+							</div>
+						))}
+					</BlurFade>
 				</div>
 			</div>
 		</section>
