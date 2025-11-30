@@ -8,52 +8,73 @@ import {
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
+import automationIcon from "../assets/automation.svg";
+import awsIcon from "../assets/aws.svg";
+import designIcon from "../assets/design.svg";
+import expressIcon from "../assets/express.svg";
+import framerMotionIcon from "../assets/framer-motion.svg";
+import frontendIcon from "../assets/frontend.svg";
+import fullstackIcon from "../assets/fullstack.svg";
+import gitIcon from "../assets/git.svg";
+import githubIcon from "../assets/github.svg";
+import javascriptIcon from "../assets/javascript.svg";
+import makeIcon from "../assets/make.svg";
+import nextjsIcon from "../assets/nextjs.svg";
+import nodejsIcon from "../assets/nodejs.svg";
+import postgresqlIcon from "../assets/postgresql.svg";
+import prismaIcon from "../assets/prisma.svg";
+import reactIcon from "../assets/react.svg";
+import shadcnIcon from "../assets/shadcn.png";
+import tailwindIcon from "../assets/tailwindcss.svg";
+import typescriptIcon from "../assets/typescript.svg";
+import wordpressIcon from "../assets/wordpress.svg";
+import pythonIcon from "../assets/python.svg";
 
 export default function AboutSection() {
 	const skills = [
 		{
 			name: "JavaScript",
-			icon: "src/assets/javascript.svg",
+			icon: javascriptIcon,
 			category: "language",
 		},
-		{ name: "React", icon: "src/assets/react.svg", category: "frontend" },
-		{ name: "Python", icon: "src/assets/python.svg", category: "language" },
+		{ name: "React", icon: reactIcon, category: "frontend" },
+		{ name: "Python", icon: pythonIcon, category: "language" },
 		{
 			name: "TypeScript",
-			icon: "src/assets/typescript.svg",
+			icon: typescriptIcon,
 			category: "language",
 		},
-		{ name: "Node.js", icon: "src/assets/nodejs.svg", category: "backend" },
-		{ name: "Next.js", icon: "src/assets/nextjs.svg", category: "frontend" },
+		{ name: "Node.js", icon: nodejsIcon, category: "backend" },
+		{ name: "Next.js", icon: nextjsIcon, category: "frontend" },
 		{
 			name: "Tailwind CSS",
-			icon: "src/assets/tailwindcss.svg",
+			icon: tailwindIcon,
 			category: "frontend",
 		},
-		{ name: "Express.js", icon: "src/assets/express.svg", category: "backend" },
+		{ name: "Express.js", icon: expressIcon, category: "backend" },
 		{
 			name: "PostgreSQL",
-			icon: "src/assets/postgresql.svg",
+			icon: postgresqlIcon,
 			category: "backend",
 		},
-		{ name: "Prisma ORM", icon: "src/assets/prisma.svg", category: "backend" },
-		{ name: "ShadCN", icon: "src/assets/shadcn.png", category: "frontend" },
-		{ name: "WordPress", icon: "src/assets/wordpress.svg", category: "CMS" },
+		{ name: "Prisma ORM", icon: prismaIcon, category: "backend" },
+		{ name: "ShadCN", icon: shadcnIcon, category: "frontend" },
+		{ name: "WordPress", icon: wordpressIcon, category: "CMS" },
 		{
 			name: "GIT",
-			icon: "src/assets/git.svg",
+			icon: gitIcon,
 			category: "version control",
 		},
-		{ name: "AWS", icon: "src/assets/aws.svg", category: "backend" },
-		{ name: "Make", icon: "src/assets/make.svg", category: "automation" },
+		{ name: "AWS", icon: awsIcon, category: "backend" },
+		{ name: "Make", icon: makeIcon, category: "automation" },
 		{
 			name: "GitHub",
-			icon: "src/assets/github.svg",
+			icon: githubIcon,
 			category: "version control",
 		},
 		{
 			name: "Framer Motion",
-			icon: "src/assets/framer-motion.svg",
+			icon: framerMotionIcon,
 			category: "frontend",
 		},
 	];
@@ -62,25 +83,25 @@ export default function AboutSection() {
 			title: "Design",
 			description:
 				"I design clean, modern, and user-centered interfaces that focus on clarity, accessibility, and a seamless user experience.",
-			icon: "src/assets/design.svg",
+			icon: designIcon,
 		},
 		{
 			title: "Frontend Development",
 			description:
 				"I build fast, responsive, and optimized UI components using React and Next.js, ensuring smooth performance across devices.",
-			icon: "src/assets/frontend.svg",
+			icon: frontendIcon,
 		},
 		{
 			title: "Full-Stack",
 			description:
 				"I create complete end-to-end applications by combining scalable backend services (Node.js, Express, APIs, DBs) with intuitive frontend interfaces.",
-			icon: "src/assets/fullstack.svg",
+			icon: fullstackIcon,
 		},
 		{
 			title: "Automation",
 			description:
 				"I automate workflows and business processes using Make and AWS Lambda, helping reduce manual tasks and improve operational efficiency.",
-			icon: "src/assets/automation.svg",
+			icon: automationIcon,
 		},
 	];
 

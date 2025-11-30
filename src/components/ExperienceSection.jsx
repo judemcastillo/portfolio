@@ -1,6 +1,9 @@
 import { Card } from "./ui/card";
 import { Timeline } from "./ui/timeline";
 import { BlurFade } from "@/components/ui/blur-fade";
+import businesswebbingIcon from "../assets/businesswebbing.svg";
+import lendistryIcon from "../assets/lendistry.svg";
+import ninelabsIcon from "../assets/ninelabs.svg";
 
 export default function ExperienceSection() {
 	const experiences = [
@@ -11,7 +14,7 @@ export default function ExperienceSection() {
 			duration: "Aug 2022 - Oct 2025",
 			years: 3,
 			months: 2,
-			icon: "src/assets/businesswebbing.svg",
+			icon: businesswebbingIcon,
 			description: [
 				"Developed and maintained responsive, high-performance web applications using React.js, Next.js, HTML, CSS, and JavaScript.",
 				"Optimized website performance through code reviews and debugging, improving page load speed and reducing bounce rates.",
@@ -28,7 +31,7 @@ export default function ExperienceSection() {
 			duration: "April 2021 - April 2022",
 			years: 1,
 			months: 0,
-			icon: "src/assets/lendistry.svg",
+			icon: lendistryIcon,
 			description: [
 				"Improved productivity by implementing digital tools and automation, streamlining administrative workflows.",
 				"Supported business development through lead generation and social media research.",
@@ -42,7 +45,7 @@ export default function ExperienceSection() {
 			duration: "March 2020 - April 2021",
 			years: 1,
 			months: 1,
-			icon: "src/assets/ninelabs.svg",
+			icon: ninelabsIcon,
 			description: [
 				"Managed social media content and brand visuals to enhance client engagement and online presence.",
 				"Designed digital content and optimized CRM database management for project reporting.",

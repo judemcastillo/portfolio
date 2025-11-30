@@ -4,6 +4,12 @@ import { Badge } from "./ui/badge";
 import { ArrowUpRight, Github } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { BlurFade } from "@/components/ui/blur-fade";
+import fakeShopGif from "../assets/fakeshop.webp";
+import fakeShopThumbnail from "../assets/fakeshop.jpg";
+import waldoGif from "../assets/whereswaldo.webp";
+import waldoThumbnail from "../assets/whereswaldo.svg";
+import yapspaceGif from "../assets/yapspace.webp";
+import yapspaceThumbnail from "../assets/yapspace.svg";
 
 export default function ProjectSection() {
 	const [hoveredProject, setHoveredProject] = useState(null);
@@ -32,14 +38,14 @@ export default function ProjectSection() {
 				"Prisma",
 				"Shadcn UI",
 			],
-			thumbnail: "src/assets/yapspace.svg",
+			thumbnail: yapspaceThumbnail,
 			description: [
 				"A full-stack social platform built with the Next.js App Router, showcasing real-time chat, social graph features, and modern UX patterns",
 				"Real-time messaging with typing indicators, presence, DMs, group chats, and room membership powered by Socket.IO",
 				"Secure authentication via NextAuth (GitHub OAuth and credentials) with role-based access, protected routes, and JWT sessions",
 			],
 			codeLink: "https://github.com/judemcastillo/social-media-clone",
-			gif: "src/assets/yapspace.webp",
+			gif: yapspaceGif,
 		},
 		{
 			title: "Wheres Waldo",
@@ -55,14 +61,14 @@ export default function ProjectSection() {
 				"Node.js",
 				"Express",
 			],
-			thumbnail: "src/assets/whereswaldo.svg",
+			thumbnail: waldoThumbnail,
 			description: [
 				"A full-stack “Where's Waldo?” game built with React + Vite + Tailwind on the frontend and Node.js + Express + Prisma + PostgreSQL on the backend.",
 				"Players can play as Guest or log in, click the image to place a targeting box with a character dropdown, get instant feedback, and race the timer to the leaderboard",
 				"Secure authentication via Passport.js with role-based access, admin dashboard, protected routes, and JWT sessions",
 			],
 			codeLink: "https://github.com/judemcastillo/wheres-waldo",
-			gif: "src/assets/whereswaldo.webp",
+			gif: waldoGif,
 		},
 		{
 			title: "Fake/Shop - Modern E-Commerce Platform",
@@ -74,14 +80,14 @@ export default function ProjectSection() {
 				"Vercel",
 				"Framer Motion",
 			],
-			thumbnail: "src/assets/fakeshop.jpg",
+			thumbnail: fakeShopThumbnail,
 			description: [
 				"Fake/Shop is a sophisticated, fully-responsive e-commerce web application built with modern web technologies.",
 				"This project demonstrates advanced React development skills, state management, API integration, and contemporary UI/UX design principles.",
 				"Real-time Data: Integration with FakeStore API for dynamic content",
 			],
 			codeLink: "https://github.com/judemcastillo/e-commerce-shop",
-			gif: "src/assets/fakeshop.webp",
+			gif: fakeShopGif,
 		},
 	];
 

@@ -6,6 +6,7 @@ import AnoAI from "@/components/ui/animated-shader-background";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import resumePdf from "./assets/Resume.pdf";
+import profileImg from "./assets/profile2.jpg";
 import { AnimatedThemeToggleButton } from "@/components/ui/animated-theme-toggle-button";
 import AboutSection from "./components/AboutSection.jsx";
 import ExperienceSection from "./components/ExperienceSection.jsx";
@@ -74,7 +75,7 @@ function App() {
 											damping: 20,
 											delay: 2.4,
 										}}
-										src="src/assets/profile2.jpg"
+										src={profileImg}
 									></motion.img>
 									<div className="flex flex-col md:gap-12 sm:justify-center items-center h-full w-full gap-5 justify-center">
 										<motion.div
