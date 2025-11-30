@@ -1,79 +1,70 @@
-# Portfolio
+# Portfolio - Jude Castillo
 
-Welcome to my personal developer portfolio! This repository highlights my experience in building modern, scalable web applications, crafting user-centered digital experiences, and delivering solutions that drive business growth.
+Welcome to my personal developer portfolio! This repository showcases my experience in building modern, scalable web applications, crafting user-centered digital experiences, and delivering solutions that drive business growth.
 
-🚀 About Me
+---
 
-I’m a full-stack developer with 3+ years of experience creating web applications using:
+## 🚀 About Me
 
-React.js, Next.js
+I’m a full-stack developer with **3+ years of experience** creating web applications using:
 
-Node.js
+- React.js, Next.js  
+- Node.js  
+- WordPress (custom themes, plugins, Elementor, BuddyBoss)  
+- AWS deployment  
+- CI/CD pipelines  
+- API integration  
+- Automation using Make (Make.com)
 
-WordPress (custom themes, plugins, Elementor, BuddyBoss)
+I’m passionate about transforming ideas into functional, intuitive, and high-performance digital products.
 
-AWS deployment
+---
 
-CI/CD pipelines
+## 🛠️ Tech Stack
 
-API integration
+### **Frontend**
+- React.js, Next.js  
+- HTML5, CSS3, JavaScript (ES6+)  
+- Tailwind CSS, Bootstrap  
+- WordPress (Elementor, BuddyBoss)
 
-Automation using Make (Make.com)
+### **Backend**
+- Node.js, Express.js  
+- REST APIs
 
-I love transforming ideas into functional, intuitive, and high-performance digital products.
+### **DevOps & Tools**
+- AWS (EC2, S3, CloudFront, Route 53)  
+- CI/CD pipelines  
+- Git & GitHub  
+- Make.com automation  
 
-🛠️ Tech Stack
-Frontend
+---
 
-React.js, Next.js
+## 📌 Featured Projects
 
-HTML5, CSS3, JavaScript (ES6+)
+### **1. Modern Web Application**
+A scalable web app built with React.js and Node.js with full API integration and AWS deployment.
 
-Tailwind CSS, Bootstrap
+### **2. Custom WordPress Theme**
+A fully customized WordPress theme built with Elementor and BuddyBoss, optimized for performance and usability.
 
-WordPress (Elementor, BuddyBoss)
+### **3. Automation Workflows**
+End-to-end business automation using Make (Make.com) to streamline operations and reduce manual tasks.
 
-Backend
+*(Add project links or screenshots when available.)*
 
-Node.js, Express.js
+---
 
-REST APIs
+## 📫 Contact
 
-DevOps & Tools
+Feel free to reach out!
 
-AWS (EC2, S3, CloudFront, Route 53)
+- **Email:** judemcastillo@gmail.com
+- **LinkedIn:** [https://linkedin.com/in/yourprofile  ](https://www.linkedin.com/in/jude-castillo-7469941b7/)
+- **Portfolio:** [https://your-portfolio.com  ](https://portfolio-snowy-gamma-27.vercel.app/)
 
-CI/CD pipelines
+---
 
-Git & GitHub
+## ⭐ Support
 
-Make.com automation
-
-📌 Featured Projects
-1. Modern Web Application
-
-A scalable web app built with React.js + Node.js with full API integration and AWS deployment.
-
-2. Custom WordPress Theme
-
-A fully customized WordPress theme with Elementor and BuddyBoss, optimized for performance and usability.
-
-3. Automation Workflows
-
-Business process automation using Make to streamline operations and reduce manual work.
-
-(Add links once your projects are live!)
-
-📫 Contact
-
-If you’d like to collaborate, have a project in mind, or just want to connect:
-
-Email: judemcastillo@gmail.com
-
-LinkedIn: [https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/jude-castillo-7469941b7/)
-
-Portfolio Website: [https://your-portfolio.com](https://portfolio-snowy-gamma-27.vercel.app/)
-
-⭐️ Show Support
-
-If you like this portfolio, feel free to star the repository or reach out—I'd love to hear from you!
+If you find this portfolio helpful or inspiring, consider giving the repository a star!
