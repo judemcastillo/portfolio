@@ -60,8 +60,8 @@ End-to-end business automation using Make (Make.com) to streamline operations an
 Feel free to reach out!
 
 - **Email:** judemcastillo@gmail.com
-- **LinkedIn:** [https://linkedin.com/in/yourprofile  ](https://www.linkedin.com/in/jude-castillo-7469941b7/)
-- **Portfolio:** [https://your-portfolio.com  ](https://portfolio-snowy-gamma-27.vercel.app/)
+- **LinkedIn:** [[https://linkedin.com/in/yourprofile ](https://www.linkedin.com/in/jude-castillo-7469941b7/) ](https://www.linkedin.com/in/jude-castillo-7469941b7/)
+- **Portfolio:** [[https://your-portfolio.com ](https://portfolio-snowy-gamma-27.vercel.app/)](https://portfolio-snowy-gamma-27.vercel.app/)
 
 ---
 
