@@ -204,12 +204,12 @@ function App() {
 								>
 									<motion.div
 										className="absolute bottom-0 left-1/2 flex -translate-x-1/2 flex-col items-center md:text-sm text-muted-foreground text-xs"
-										animate={{ y: [0, -3, 0] }}
+										animate={{ y: [0, -5, 0] }}
 										transition={{
-											duration: 1.3,
+											duration: 1.2,
 											repeat: Infinity,
 											repeatType: "loop",
-											ease: "easeInOut",
+									
 										}}
 									>
 										<span className="uppercase tracking-wide text-center font-semibold">
@@ -239,7 +239,20 @@ function App() {
 						>
 							<BlurFade delay={0.25} inView>
 								<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-									Hello World👋
+									Hello World
+									<motion.span
+										className="inline-block"
+										style={{ transformOrigin: "70% 70%" }}
+										animate={{ rotate: [0, 14, -8, 14, 0] }}
+										transition={{
+											duration: 1.8,
+											repeat: Infinity,
+											repeatDelay:0.5,
+											ease: "easeInOut",
+										}}
+									>
+										👋
+									</motion.span>
 								</h2>
 							</BlurFade>
 							{/* <TextScramble className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none font-[sans-serif]">
