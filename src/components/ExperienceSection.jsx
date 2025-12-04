@@ -11,9 +11,9 @@ export default function ExperienceSection() {
 			company: "Business Webbing Systems",
 			location: "remote",
 			role: "Technical Specialist",
-			duration: "Aug 2022 - Oct 2025",
+			duration: "Aug 2022 - Sep 2025",
 			years: 3,
-			months: 2,
+			months: 1,
 			icon: businesswebbingIcon,
 			description: [
 				"Developed and maintained responsive, high-performance web applications using React.js, Next.js, HTML, CSS, and JavaScript.",
