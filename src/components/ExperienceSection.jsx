@@ -10,7 +10,7 @@ export default function ExperienceSection() {
 		{
 			company: "Business Webbing Systems",
 			location: "remote",
-			role: "Technical Specialist",
+			role: "Web Developer",
 			duration: "Aug 2022 - Sep 2025",
 			years: 3,
 			months: 1,

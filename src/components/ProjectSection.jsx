@@ -111,7 +111,7 @@ export default function ProjectSection() {
 				</div>
 			</div>
 
-			<div className="flex flex-col   space-y-6 h-full overflow-y-scroll no-scrollbar w-full items-center justify-start">
+			<div className="flex flex-col   space-y-6 h-full overflow-y-scroll no-scrollbar w-full items-center justify-start pt-2">
 				<BlurFade inView delay={0.6}>
 					{projects.map((project, index) => (
 						<motion.div className="relative">
