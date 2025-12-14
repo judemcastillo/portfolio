@@ -132,11 +132,37 @@ export default function ProjectSection() {
 													</a>
 												</div>
 											</div>
+											<div className="sm:relative sm:hidden block pb-4">
+												<motion.img
+													src={project.thumbnail}
+													alt={`${project.title} preview`}
+													className="relative z-10 h-full w-full rounded-2xl object-contain"
+													animate={{
+														opacity: hoveredProject === project.title ? 0 : 1,
+													}}
+													transition={{ duration: 0.35 }}
+												/>
+
+												<AnimatePresence>
+													{hoveredProject === project.title && (
+														<motion.img
+															key={`${project.title}-gif`}
+															src={project.gif}
+															alt={`${project.title} preview animated`}
+															className="absolute inset-0 z-20 h-full w-full rounded-2xl object-contain"
+															initial={{ opacity: 0 }}
+															animate={{ opacity: 1 }}
+															exit={{ opacity: 0 }}
+															transition={{ duration: 0.35 }}
+														/>
+													)}
+												</AnimatePresence>
+											</div>
 											<a
 												href={project.codeLink}
 												target="_blank"
 												rel="noreferrer"
-												className="group inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground transition-all duration-200  hover:border-foreground/30 hover:bg-foreground/10"
+												className="group inline-flex items-center w-fit gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground transition-all duration-200  hover:border-foreground/30 hover:bg-foreground/10"
 											>
 												<span>Code</span>
 												<Github className="size-4 transition-transform duration-200" />
@@ -187,7 +213,7 @@ export default function ProjectSection() {
 													setHoveredProject(null);
 												}}
 											>
-												<div className="relative">
+												<div className="sm:relative hidden sm:block">
 													<motion.img
 														src={project.thumbnail}
 														alt={`${project.title} preview`}

@@ -223,10 +223,10 @@ export default function AboutSection() {
 	};
 	return (
 		<section
-			className="z-30 flex h-screen flex-col items-center justify-center gap-4 snap-start py-[5%] px-[7%] "
+			className="z-30 flex h-screen flex-col items-center justify-center sm:gap-4 gap-1 snap-start py-[5%] px-[7%] "
 			id="Skills"
 		>
-			<div className="h-full flex flex-col items-center sm:justify-start gap-5 w-full  justify-center max-w-[1200px]">
+			<div className=" h-full flex flex-col items-center sm:justify-start sm:gap-5 w-full  justify-center max-w-[1200px] gap-1">
 				<div>
 					<BlurFade inView delay={0.2}>
 						<h1 className="sm:text-4xl font-bold text-center text-2xl">
@@ -240,7 +240,7 @@ export default function AboutSection() {
 					</BlurFade>
 				</div>
 				<BlurFade inView delay={0.5}>
-					<div className="flex flex-col items-center gap-4 w-full max-w-[1200px]">
+					<div className="flex flex-col items-center gap-4 w-full sm:max-w-[1200px] max-w-[90vw]">
 						<div className="relative w-full overflow-hidden">
 							<div
 								ref={trackRef}
@@ -254,7 +254,7 @@ export default function AboutSection() {
 										key={`${item.title}-${idx}`}
 										data-card
 									>
-										<div className="sm:size-10 lg:size-14 flex items-center justify-center transition-all duration-300 size-7">
+										<div className="sm:size-10 lg:size-14 sm:flex items-center justify-center transition-all duration-300 size-7 hidden ">
 											<img src={item.icon} alt={item.title} />
 										</div>
 
@@ -287,7 +287,7 @@ export default function AboutSection() {
 							>
 								<ArrowRight className="sm:size-5 size-3" />
 							</button>
-							<div className="mt-2 flex w-full justify-center gap-2 mb-4">
+							<div className="mt-2 flex w-full justify-center gap-2 sm:mb-4 mb-1">
 								{about.map((item, idx) => (
 									<button
 										key={item.title}
@@ -307,7 +307,7 @@ export default function AboutSection() {
 					</div>
 				</BlurFade>
 			</div>
-			<div className="h-full flex flex-col items-center justify-start gap-5 w-full max-w-[1200px]">
+			<div className="h-full flex flex-col items-center justify-start sm:gap-5 w-full max-w-[1200px] gap-2">
 				<div>
 					<BlurFade inView delay={0.6}>
 						<h1 className="text-2xl sm:text-4xl font-bold text-center">
@@ -322,7 +322,7 @@ export default function AboutSection() {
 					</BlurFade>
 				</div>
 
-				<div className="flex flex-col  items-center justify-center w-full gap-3 ">
+				<div className="flex flex-col  items-center justify-center w-full sm:gap-3 gap-1">
 					<LayoutGroup>
 						<div className="flex flex-wrap items-center justify-center gap-2">
 							{categories.map((category, idx) => {
@@ -333,7 +333,7 @@ export default function AboutSection() {
 											key={category}
 											type="button"
 											onClick={() => setSelectedCategory(category)}
-											className="relative sm:px-4 py-2 sm:text-sm capitalize transition-all duration-200 border-3 border-transparent hover:-translate-y-0.5 cursor-pointer text-xs"
+											className="relative sm:px-4 sm:py-2 sm:text-sm capitalize transition-all duration-200 border-3 border-transparent hover:-translate-y-0.5 cursor-pointer text-xs"
 											whileTap={{ scale: 0.97 }}
 										>
 											{isActive && (
@@ -364,7 +364,7 @@ export default function AboutSection() {
 					<BlurFade
 						inView
 						delay={1.1}
-						className="flex flex-row flex-wrap items-center justify-center  p-3 h-full max-w-[1200px] w-full gap-3 overflow-y-scroll sm:max-h-100 no-scrollbar max-h-30"
+						className="flex flex-row flex-wrap items-center justify-center  p-3 h-full max-w-[1200px] w-full gap-3 overflow-y-scroll sm:max-h-100 no-scrollbar "
 					>
 						{filteredSkills.map((skill, idx) => (
 							<div

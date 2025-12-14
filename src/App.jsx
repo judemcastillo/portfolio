@@ -39,7 +39,7 @@ function App() {
 
 	return (
 		<ThemeProvider>
-			<div className="relative flex min-h-screen w-screen flex-col overflow-hidden bg-background text-foreground">
+			<div className="relative flex min-h-screen w-screen flex-col overflow-hidden bg-background text-foreground scroll-smooth">
 				<div className="relative z-30 flex h-screen w-full gap-8">
 					<StickySideNav
 						sections={SECTIONS}
@@ -66,7 +66,7 @@ function App() {
 								</div>
 								<div className="flex md:flex-row md:items-start gap-6 md:justify-start w-full flex-col justify-center items-center">
 									<motion.img
-										className="lg:h-[400px] md:h-[300px] sm:h-[450px] h-[250px] md:w-fit rounded-lg md:object-contain w-full object-cover"
+										className="lg:h-[400px] md:h-[300px] sm:h-[450px] h-[200px] md:w-fit rounded-lg md:object-contain w-full object-cover"
 										initial={{ opacity: 0, y: 50 }}
 										animate={{ opacity: 1, y: 0 }}
 										transition={{
@@ -209,7 +209,6 @@ function App() {
 											duration: 1.2,
 											repeat: Infinity,
 											repeatType: "loop",
-									
 										}}
 									>
 										<span className="uppercase tracking-wide text-center font-semibold">
@@ -247,7 +246,7 @@ function App() {
 										transition={{
 											duration: 1.8,
 											repeat: Infinity,
-											repeatDelay:0.5,
+											repeatDelay: 0.5,
 											ease: "easeInOut",
 										}}
 									>
@@ -255,9 +254,6 @@ function App() {
 									</motion.span>
 								</h2>
 							</BlurFade>
-							{/* <TextScramble className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none font-[sans-serif]">
-								Hello World!
-							</TextScramble> */}
 						</section>
 					</motion.div>
 				</AnimatePresence>
