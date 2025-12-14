@@ -67,7 +67,7 @@ export const Timeline = ({ data }) => {
 	return (
 		<div
 			ref={containerRef}
-			className="max-h-[70vh] w-full overflow-y-auto no-scrollbar bg-transparent  md:px-10"
+			className="max-h-[78vh] w-full overflow-y-auto no-scrollbar bg-transparent  md:px-10"
 			style={{
 				WebkitMaskImage:
 					"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",

@@ -109,6 +109,7 @@ export default function AboutSection() {
 	const marqueeItems = Array.from({ length: loopCount }, () => about).flat();
 	const trackRef = useRef(null);
 	const activeIndexRef = useRef(0);
+	const scrollProgressRef = useRef(0);
 	const [isPaused, setIsPaused] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [selectedCategory, setSelectedCategory] = useState("all");
@@ -123,17 +124,35 @@ export default function AboutSection() {
 		const track = trackRef.current;
 		if (!track) return undefined;
 
-		const tick = () => {
-			if (isPaused) return;
-			const loopWidth = track.scrollWidth / loopCount;
-			if (!loopWidth) return;
-			const next = track.scrollLeft + 0.6;
-			track.scrollLeft = next >= loopWidth ? next - loopWidth : next;
+		let frameId = null;
+		let lastTime = performance.now();
+		const speed = 36; // px per second, matches previous ~0.6px per frame
+
+		scrollProgressRef.current = track.scrollLeft;
+
+		const step = (now) => {
+			const delta = now - lastTime;
+			lastTime = now;
+
+			if (!isPaused) {
+				const loopWidth = track.scrollWidth / loopCount;
+				if (loopWidth) {
+					const distance = (delta / 1000) * speed;
+					let next = scrollProgressRef.current + distance;
+					if (next >= loopWidth) next -= loopWidth;
+					scrollProgressRef.current = next;
+					track.scrollLeft = next;
+				}
+			}
+
+			frameId = window.requestAnimationFrame(step);
 		};
 
-		const interval = window.setInterval(tick, 16);
-		return () => window.clearInterval(interval);
-	}, [isPaused]);
+		frameId = window.requestAnimationFrame(step);
+		return () => {
+			if (frameId) window.cancelAnimationFrame(frameId);
+		};
+	}, [isPaused, loopCount]);
 
 	const handleArrow = (direction) => {
 		const track = trackRef.current;
@@ -145,6 +164,7 @@ export default function AboutSection() {
 
 		const next = track.scrollLeft + shift;
 		const normalized = ((next % loopWidth) + loopWidth) % loopWidth;
+		scrollProgressRef.current = normalized;
 		track.scrollTo({ left: normalized, behavior: "smooth" });
 
 		window.setTimeout(() => setIsPaused(false), 800);
@@ -179,6 +199,7 @@ export default function AboutSection() {
 
 			const center = track.scrollLeft + track.clientWidth / 2 - itemWidth / 2;
 			const normalizedCenter = ((center % loopWidth) + loopWidth) % loopWidth;
+			scrollProgressRef.current = track.scrollLeft;
 
 			const nextIndex = Math.round(normalizedCenter / itemWidth) % about.length;
 			if (nextIndex !== activeIndexRef.current) {
@@ -218,6 +239,7 @@ export default function AboutSection() {
 		const normalized = ((target % loopWidth) + loopWidth) % loopWidth;
 
 		setIsPaused(true);
+		scrollProgressRef.current = normalized;
 		track.scrollTo({ left: normalized, behavior: "smooth" });
 		window.setTimeout(() => setIsPaused(false), 800);
 	};
