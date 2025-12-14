@@ -246,11 +246,11 @@ export default function AboutSection() {
 								ref={trackRef}
 								onMouseEnter={() => setIsPaused(true)}
 								onMouseLeave={() => setIsPaused(false)}
-								className="flex w-full flex-nowrap gap-4 overflow-hidden marquee-fade py-5"
+								className="flex w-full flex-nowrap gap-4 overflow-x-auto no-scrollbar marquee-fade py-5"
 							>
 								{marqueeItems.map((item, idx) => (
 									<Card
-										className="z-30 flex flex-col p-6 border-foreground/10 border-2 lg:h-63  lg:w-80 gap-2 flex-shrink-0 transition-opacity duration-200 w-74"
+										className="z-30 flex flex-col p-6 border-foreground/10 border-2 lg:h-63  lg:w-80 gap-2 flex-shrink-0 transition-opacity duration-200 sm:w-74 w-60"
 										key={`${item.title}-${idx}`}
 										data-card
 									>
@@ -258,7 +258,10 @@ export default function AboutSection() {
 											<img src={item.icon} alt={item.title} />
 										</div>
 
-										<div className="w-full flex flex-row items-start justify-between ">
+										<div className="w-full flex flex-row items-center justify-start gap-3">
+											<div className="sm:size-10 lg:size-14 sm:hidden items-center justify-center transition-all duration-300 size-5 glex ">
+												<img src={item.icon} alt={item.title} />
+											</div>
 											<h3 className="font-semibold lg:text-[20px] whitespace-break-spaces p-0 m-0 sm:text-[16px] text-[14px]">
 												{item.title}
 											</h3>
@@ -324,7 +327,7 @@ export default function AboutSection() {
 
 				<div className="flex flex-col  items-center justify-center w-full sm:gap-3 gap-1">
 					<LayoutGroup>
-						<div className="flex flex-wrap items-center justify-center gap-2">
+						<div className="sm:flex flex-wrap items-center justify-center gap-2 hidden">
 							{categories.map((category, idx) => {
 								const isActive = category === selectedCategory;
 								return (
