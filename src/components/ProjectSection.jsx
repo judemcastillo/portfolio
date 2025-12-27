@@ -111,10 +111,15 @@ export default function ProjectSection() {
 				</div>
 			</div>
 
-			<div className="flex flex-col   space-y-6 h-full overflow-y-scroll no-scrollbar w-full items-center justify-start pt-2">
+			<div className="flex flex-col   space-y-6 h-full overflow-y-scroll no-scrollbar w-full items-center justify-start pt-2 "style={{
+				WebkitMaskImage:
+					"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+				maskImage:
+					"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+			}}>
 				<BlurFade inView delay={0.6}>
 					{projects.map((project, index) => (
-						<motion.div className="relative">
+						<motion.div className="relative" key={index}>
 							<Card className="relative  border-foreground/10 border-2 bg-card/80 backdrop-blur-xl  p-0 max-w-[1200px] mb-3">
 								<div className="relative grid gap-6 p-6 sm:p-7 lg:grid-cols-[1.15fr_0.7fr]">
 									<div className="flex flex-col gap-4">

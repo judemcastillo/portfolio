@@ -109,10 +109,10 @@ export default function ExperienceSection() {
 
 	return (
 		<section
-			className="z-30 flex min-h-screen flex-col items-center sm:justify-between justify-start sm:gap-8 snap-start px-[7%] py-[5%] gap-2"
+			className="z-30 flex h-screen flex-col items-center sm:justify-between justify-start sm:gap-8 snap-start px-[7%] py-[3%] "
 			id="Experience"
 		>
-			<div className="flex w-full max-w-[1200px] flex-col items-center gap-4 justify-between h-full flex-1">
+			<div className="flex w-full max-w-[1200px] flex-col items-center gap-4 justify-between h-[15%] ">
 				<div className="flex flex-col items-center gap-2 h-full">
 					<BlurFade inView delay={0.2}>
 						<h1 className="sm:text-4xl font-bold text-center text-2xl">
@@ -127,7 +127,13 @@ export default function ExperienceSection() {
 					</BlurFade>
 				</div>
 			</div>
-			<div className="w-full h-full overflow-y-auto max-w-[1200px] flex-3">
+			<div className="w-full h-[85%] overflow-y-auto no-scrollbar max-w-[1200px] "
+			style={{
+				WebkitMaskImage:
+					"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+				maskImage:
+					"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+			}}>
 				<BlurFade inView delay={0.6}>
 					<Timeline data={formattedExperiences} />
 				</BlurFade>
