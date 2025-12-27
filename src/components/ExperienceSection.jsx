@@ -127,13 +127,15 @@ export default function ExperienceSection() {
 					</BlurFade>
 				</div>
 			</div>
-			<div className="w-full h-[85%] overflow-y-auto no-scrollbar max-w-[1200px] "
-			style={{
-				WebkitMaskImage:
-					"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-				maskImage:
-					"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-			}}>
+			<div
+				className="w-full h-[85%] overflow-y-auto no-scrollbar max-w-[1200px] "
+				style={{
+					WebkitMaskImage:
+						"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+					maskImage:
+						"linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+				}}
+			>
 				<BlurFade inView delay={0.6}>
 					<Timeline data={formattedExperiences} />
 				</BlurFade>

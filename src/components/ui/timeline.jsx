@@ -19,7 +19,7 @@ export const Timeline = ({ data }) => {
 
 			const last = itemRefs.current[itemRefs.current.length - 1];
 			if (last && ref.current) {
-				const offset = last.offsetTop + last.clientHeight *0.339;
+				const offset = last.offsetTop + last.clientHeight * 0.339;
 				setLineMax(offset);
 			}
 		};
@@ -34,7 +34,11 @@ export const Timeline = ({ data }) => {
 		offset: ["start 0%", "end 80%"],
 	});
 
-	const heightTransform = useTransform(scrollYProgress, [0, 1], [0, lineMax || height]);
+	const heightTransform = useTransform(
+		scrollYProgress,
+		[0, 1],
+		[0, lineMax || height]
+	);
 	const opacityTransform = useTransform(scrollYProgress, [0, 0.05], [0.2, 1]);
 
 	useEffect(() => {
@@ -49,7 +53,7 @@ export const Timeline = ({ data }) => {
 				if (visible[0]) {
 					const idx = Number.parseInt(
 						visible[0].target.getAttribute("data-index") || "0",
-						10,
+						10
 					);
 					setActiveIndex(idx);
 				}
@@ -57,7 +61,7 @@ export const Timeline = ({ data }) => {
 			{
 				root: containerRef.current,
 				threshold: [0.35, 0.6, 0.75],
-			},
+			}
 		);
 
 		itemRefs.current.forEach((el) => el && observer.observe(el));
