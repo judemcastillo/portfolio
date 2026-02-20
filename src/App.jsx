@@ -25,7 +25,7 @@ import {
 	DialogDescription,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { TextScramble } from "@/components/ui/text-scramble";
+
 
 const SECTIONS = [
 	{ id: "About", label: "Intro" },
